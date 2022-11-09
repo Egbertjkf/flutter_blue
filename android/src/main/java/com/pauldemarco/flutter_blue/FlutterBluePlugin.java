@@ -846,8 +846,8 @@ public class FlutterBluePlugin implements FlutterPlugin, ActivityAware, MethodCa
         for(int i = 0; i < serviceUuids.size(); i++) {
             uuids[i] = UUID.fromString(serviceUuids.get(i));
         }
-        boolean success = mBluetoothAdapter.startLeScan(uuids, getScanCallback18());}
-        if(!success) throw new IllegalStateException("getBluetoothLeScanner() is null. Is the Adapter on?");
+        boolean success = mBluetoothAdapter.startLeScan(uuids, getScanCallback18());
+        if(!success) throw new IllegalStateException("getBluetoothLeScanner() is null. Is the Adapter on?");}
     }
 
     private void stopScan18() {

@@ -269,7 +269,8 @@ public class FlutterBluePlugin implements FlutterPlugin, ActivityAware, MethodCa
                     p.addDevices(ProtoMaker.from(d));
                 }
                 result.success(p.build().toByteArray());
-                log(LogLevel.EMERGENCY, "mDevices size: " + mDevices.size());
+                if(mDevices != null)
+                {log(LogLevel.EMERGENCY, "mDevices size: " + mDevices.size());}
                 break;
             }
 
@@ -840,11 +841,12 @@ public class FlutterBluePlugin implements FlutterPlugin, ActivityAware, MethodCa
 
     private void startScan18(Protos.ScanSettings proto) throws IllegalStateException {
         List<String> serviceUuids = proto.getServiceUuidsList();
-        UUID[] uuids = new UUID[serviceUuids.size()];
+        if(serviceUuids != null)
+        {UUID[] uuids = new UUID[serviceUuids.size()];
         for(int i = 0; i < serviceUuids.size(); i++) {
             uuids[i] = UUID.fromString(serviceUuids.get(i));
         }
-        boolean success = mBluetoothAdapter.startLeScan(uuids, getScanCallback18());
+        boolean success = mBluetoothAdapter.startLeScan(uuids, getScanCallback18());}
         if(!success) throw new IllegalStateException("getBluetoothLeScanner() is null. Is the Adapter on?");
     }
 

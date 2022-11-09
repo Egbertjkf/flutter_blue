@@ -69,7 +69,7 @@ public class ProtoMaker {
             // Manufacturer Specific Data
             SparseArray<byte[]> nullCheck = scanRecord.getManufacturerSpecificData();
             SparseArray<byte[]> msd = [];
-            if(test != null){
+            if(nullCheck != null){
                 msd = nullCheck;
             }
             for (int i = 0; i < msd.size(); i++) {

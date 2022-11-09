@@ -78,11 +78,12 @@ public class ProtoMaker {
             }
             // Service Data
             Map<ParcelUuid, byte[]> serviceData = scanRecord.getServiceData();
-            for (Map.Entry<ParcelUuid, byte[]> entry : serviceData.entrySet()) {
+            if(serviceData != null)
+            {for (Map.Entry<ParcelUuid, byte[]> entry : serviceData.entrySet()) {
                 ParcelUuid key = entry.getKey();
                 byte[] value = entry.getValue();
                 a.putServiceData(key.getUuid().toString(), ByteString.copyFrom(value));
-            }
+            }}
             // Service UUIDs
             List<ParcelUuid> serviceUuids = scanRecord.getServiceUuids();
             if(serviceUuids != null) {
